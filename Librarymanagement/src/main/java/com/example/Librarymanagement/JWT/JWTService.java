@@ -71,6 +71,6 @@ public class JWTService {
     }
 
     private Date extractExpiration(String jwtToken) {
-        return null;
+        return extractClaims(jwtToken, Claims::getExpiration);
     }
 }
