@@ -26,6 +26,6 @@ public class IssueController {
 
     @PostMapping("/return/{issueRecordId}")
     public ResponseEntity<IssueRecord> returnTheBook(@PathVariable Long issueRecordId){
-        return ResponseEntity.ok(IssueRecordService.returnTheBook(issueRecordId));
+        return ResponseEntity.ok(issueRecordService.returnTheBook(issueRecordId));
     }
 }

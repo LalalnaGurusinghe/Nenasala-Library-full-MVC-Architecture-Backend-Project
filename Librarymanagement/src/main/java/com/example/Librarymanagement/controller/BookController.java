@@ -19,29 +19,29 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @GetMapping("/books/all")
+    @GetMapping("/all")
     public ResponseEntity<List<Book>> getAllBooks() {
         return ResponseEntity.ok(bookService.getAllBooks());
     }
 
-    @GetMapping("/books/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Book> getBookById(@PathVariable Long id){
         return ResponseEntity.ok(bookService.getBookById(id));
     }
 
-    @PostMapping("/books/add")
+    @PostMapping("/add")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Book> addBook(@RequestBody BookDTO bookDTO){
         return ResponseEntity.ok(bookService.addBook(bookDTO));
     }
 
-    @PostMapping("/books/update/{id}")
+    @PostMapping("/update/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Book> updateBookById(@PathVariable Long id ,  @RequestBody BookDTO bookDTO) {
         return ResponseEntity.ok(bookService.updateBookById(id, bookDTO));
     }
 
-    @DeleteMapping("/books/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Book> deleteBookById(@PathVariable Long id){
         return ResponseEntity.ok(bookService.deleteBookById(id));
