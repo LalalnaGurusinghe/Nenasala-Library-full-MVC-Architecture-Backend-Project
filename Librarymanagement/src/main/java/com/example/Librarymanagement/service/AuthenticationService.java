@@ -1,5 +1,6 @@
 package com.example.Librarymanagement.service;
 
+import com.example.Librarymanagement.JWT.JWTService;
 import com.example.Librarymanagement.dto.LoginRequestDTO;
 import com.example.Librarymanagement.dto.LoginResponseDTO;
 import com.example.Librarymanagement.dto.RegisterRequestDTO;
@@ -22,10 +23,13 @@ public class AuthenticationService {
 
     private final AuthenticationManager authenticationManager;
 
-    public AuthenticationService(UserRepo userRepo, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager) {
+    private final JWTService jwtService;
+
+    public AuthenticationService(UserRepo userRepo, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager, JWTService jwtService) {
         this.userRepo = userRepo;
         this.passwordEncoder = passwordEncoder;
         this.authenticationManager = authenticationManager;
+        this.jwtService = jwtService;
     }
 
     public User registerNormalUser(RegisterRequestDTO registerRequestDTO) {
